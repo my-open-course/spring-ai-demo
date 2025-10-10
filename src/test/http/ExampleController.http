@@ -1,0 +1,5 @@
+### Simple Greeting
+GET http://127.0.0.1:8080/api/hello?name=Tom
+
+### Chat with AI
+GET http://127.0.0.1:8080/api/chat?text=Who are you?
