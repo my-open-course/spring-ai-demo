@@ -34,7 +34,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-chat-memory'
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    // implementation "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
