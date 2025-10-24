@@ -14,8 +14,8 @@ on:
     branches: [ "main" ]
 
 env:
-  spring.ai.openai.api-key=${{ secrets.OPENAI_API_KEY }}
-  spring.ai.openai.base-url=${{ secrets.OPENAI_BASE_URL }}
+  spring.ai.openai.api-key: ${{ secrets.OPENAI_API_KEY }}
+  spring.ai.openai.base-url: ${{ secrets.OPENAI_BASE_URL }}
 
 jobs:
   build:
