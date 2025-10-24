@@ -30,6 +30,6 @@ jobs:
 
       - name: Build with Gradle Wrapper
         env:
-          SPRING_AI_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SPRING_AI_OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          SPRING_AI_OPENAI_API_KEY: ${{ OPENAI_API_CONFIG.OPENAI_API_KEY }}
+          SPRING_AI_OPENAI_BASE_URL: ${{ OPENAI_API_CONFIG.OPENAI_BASE_URL }}
         run: ./gradlew build
