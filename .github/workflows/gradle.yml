@@ -7,22 +7,28 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  run-unit-tests-on-different-os:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ 'macos-latest', 'windows-latest', 'ubuntu-latest' ]
+        java: [ '17' ]
+
     permissions:
       contents: read
 
+    name: Use ${{ matrix.os }} with Java ${{ matrix.java }}
     steps:
       - uses: actions/checkout@v5
-      - name: Set up JDK 17
+      - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v5
         with:
-          java-version: '17'
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Build with Gradle Wrapper
+      - name: Build with Gradle Wrapper On ${{ matrix.os }}
         env:
           SPRING_AI_OPENAI_API_KEY: ${{ vars.OPENAI_API_KEY }}
           SPRING_AI_OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
