@@ -13,10 +13,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  SPRING_AI_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  SPRING_AI_OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-
 jobs:
   build:
 
@@ -32,26 +28,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Debug environment variables
-        run: |
-          echo "API Key exists: ${{ secrets.OPENAI_API_KEY != '' }}"
-          echo "Base URL exists: ${{ secrets.OPENAI_BASE_URL != '' }}"
-          printenv
-          
-
       - name: Build with Gradle Wrapper
+        env:
+          SPRING_AI_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SPRING_AI_OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: ./gradlew build
-
-  dependency-submission:
-
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
