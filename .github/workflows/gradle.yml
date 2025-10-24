@@ -32,6 +32,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Debug environment variables
+        run: |
+          echo "API Key exists: ${{ secrets.OPENAI_API_KEY != '' }}"
+          echo "Base URL exists: ${{ secrets.OPENAI_BASE_URL != '' }}"
+          printenv | grep spring.ai
+          
+
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
