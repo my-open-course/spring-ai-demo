@@ -31,6 +31,6 @@ jobs:
       - name: Build with Gradle Wrapper On ${{ matrix.os }}
         continue-on-error: true
         env:
-          SPRING_AI_OPENAI_API_KEY: ${{ vars.OPENAI_API_KEY }}
-          SPRING_AI_OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
+          SPRING_AI_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SPRING_AI_OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: ./gradlew clean build --no-daemon --info
